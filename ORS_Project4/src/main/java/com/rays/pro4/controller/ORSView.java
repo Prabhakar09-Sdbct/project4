@@ -42,6 +42,8 @@ public interface ORSView {
 	public String TIMETABLE_LIST_VIEW = PAGE_FOLDER + "/TimeTableListView.jsp";
 	public String TASK_VIEW = PAGE_FOLDER + "/TaskView.jsp";
 	public String TASK_LIST_VIEW = PAGE_FOLDER + "/TaskListView.jsp";
+	public String PAYMENT_RECORD_VIEW = PAGE_FOLDER + "/PaymentRecordView.jsp";
+	public String PAYMENT_RECORD_LIST_VIEW = PAGE_FOLDER + "/PaymentRecordListView.jsp";
 	public String ERROR_VIEW = PAGE_FOLDER + "/ErrorView.jsp";
 	// public String ERROR_VIEW5 = PAGE_FOLDER + "/ErrorView5.jsp";
 
@@ -74,6 +76,8 @@ public interface ORSView {
 	public String TIMETABLE_LIST_CTL = APP_CONTEXT + "/ctl/TimeTableListCtl";
 	public String TASK_CTL = APP_CONTEXT + "/ctl/TaskCtl";
 	public String TASK_LIST_CTL = APP_CONTEXT + "/ctl/TaskListCtl";
+	public String PAYMENT_RECORD_CTL = APP_CONTEXT + "/ctl/PaymentRecordCtl";
+	public String PAYMENT_RECORD_LIST_CTL = APP_CONTEXT + "/ctl/PaymentRecordListCtl";
 	public String ERROR_CTL = APP_CONTEXT + "/ErrorCtl";
 
 }

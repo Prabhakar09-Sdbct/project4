@@ -1,28 +1,2 @@
-# Compiled class files
-target/
-
-# Eclipse project files
-.classpath
-.project
-.settings/
-
-# Maven specific files
-.mvn/
-.mvnw
-.mvnw.cmd
-
-# Other IDEs and tools
-.idea/
-*.iml
-
-# Logs and temp files
-*.log
-*.tmp
-*.swp
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Ignore mysql-data directory
+/target/
 /mysql-data/

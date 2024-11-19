@@ -68,6 +68,20 @@ public class DataUtility {
 			return 0;
 		}
 	}
+	
+	/**
+	 * Converts String into Double
+	 *
+	 * @param val
+	 * @return
+	 */
+	public static double getDouble(String val) {
+		if (DataValidator.isDouble(val)) {
+			return Double.parseDouble(val);
+		} else {
+			return 0;
+		}
+	}
 
 	/**
 	 * Converts String into Long
