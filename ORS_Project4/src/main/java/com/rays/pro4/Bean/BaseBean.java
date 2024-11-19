@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 /**
  * * Parent class of all Beans in application. It contains generic attributes.
  * 
- * @author Aniket sirota
+ * @author Prabhakar Mandloi
  *
  */
 

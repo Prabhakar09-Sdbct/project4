@@ -15,7 +15,7 @@ import com.rays.pro4.Model.CollegeModel;
 /**
  * College Model Test classes.
  * 
- * @author Aniket sirota
+ * @author Prabhakar Mandloi
  *
  */
 public class CollegeModelTest {

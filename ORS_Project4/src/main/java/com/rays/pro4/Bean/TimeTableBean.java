@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * TimeTable JavaBean encapsulates TimeTable attributes.
  * 
- * @author Aniket sirota
+ * @author Prabhakar Mandloi
  *
  */
 public class TimeTableBean extends BaseBean{

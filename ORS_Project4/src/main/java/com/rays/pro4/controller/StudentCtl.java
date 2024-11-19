@@ -26,7 +26,7 @@ import com.rays.pro4.Util.ServletUtility;
 * Student functionality Controller. Performs operation for add, update, delete
 * and get Student
 * 
-*  @author Aniket sirota
+*  @author Prabhakar Mandloi
 */
 @WebServlet(name="StudentCtl", urlPatterns = {"/ctl/StudentCtl"})
 public class StudentCtl extends BaseCtl{

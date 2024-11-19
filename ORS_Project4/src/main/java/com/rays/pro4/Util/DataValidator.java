@@ -4,7 +4,7 @@ import java.util.Date;
 /**
  * This class validates input data.
  * 
- * @author Aniket sirota
+ * @author Prabhakar Mandloi
  *
  */
 public class DataValidator {

@@ -24,7 +24,7 @@ import com.rays.pro4.Util.ServletUtility;
 /**
 * The Class SubjectCtl.
 * 
-*  @author Aniket sirota
+*  @author Prabhakar Mandloi
 * 
 */
 @WebServlet (name = "SubjectCtl" , urlPatterns = {"/ctl/SubjectCtl"})

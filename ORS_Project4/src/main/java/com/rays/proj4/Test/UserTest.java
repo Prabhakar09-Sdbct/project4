@@ -16,7 +16,7 @@ import com.rays.pro4.Model.UserModel;
 /**
  * User Model Test classes.
  * 
- * @author Aniket sirota
+ * @author Prabhakar Mandloi
  *
  */
 public class UserTest {

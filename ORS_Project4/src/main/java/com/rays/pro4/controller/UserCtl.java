@@ -25,7 +25,7 @@ import com.rays.pro4.Util.ServletUtility;
 /**
  * The Class UserCtl.
  * 
- * @author Aniket sirota
+ * @author Prabhakar Mandloi
  * 
  */
 @WebServlet(name = "UserCtl", urlPatterns = { "/ctl/UserCtl" })

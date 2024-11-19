@@ -22,7 +22,7 @@ import com.rays.pro4.Util.ServletUtility;
  * application without login.
  * 
  * 
- * @author Aniket sirota
+ * @author Prabhakar Mandloi
  */
 @WebFilter(filterName = "FrontCtl", urlPatterns = { "/ctl/*", "/doc/*" })
 public class FrontControler implements Filter {

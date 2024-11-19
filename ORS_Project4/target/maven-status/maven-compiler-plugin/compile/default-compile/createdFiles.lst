@@ -11,6 +11,7 @@ com\rays\pro4\Util\EmailUtility$1.class
 com\rays\pro4\Bean\FacultyBean.class
 com\rays\proj4\Test\SubjectTest.class
 com\rays\proj4\Test\TimeTableTest.class
+com\rays\pro4\Model\TaskModel.class
 com\rays\pro4\Exception\DuplicateRecordException.class
 com\rays\pro4\Model\FacultyModel.class
 com\rays\pro4\Util\PropertyReader.class
@@ -24,6 +25,7 @@ com\rays\pro4\controller\CollegeCtl.class
 com\rays\pro4\controller\UserRegistrationCtl.class
 com\rays\pro4\controller\ORSView.class
 com\rays\pro4\controller\FacultyCtl.class
+com\rays\pro4\controller\TaskListCtl.class
 com\rays\pro4\controller\MarksheetMeritListCtl.class
 com\rays\proj4\Test\CollegeModelTest.class
 com\rays\pro4\controller\UserListCtl.class
@@ -43,6 +45,7 @@ com\rays\pro4\Model\CollegeModel.class
 com\rays\pro4\controller\SubjectListCtl.class
 com\rays\pro4\Bean\CourseBean.class
 com\rays\pro4\Util\ServletUtility.class
+com\rays\pro4\controller\TaskCtl.class
 com\rays\pro4\controller\SubjectCtl.class
 com\rays\pro4\Model\StudentModel.class
 com\rays\pro4\controller\UserCtl.class
@@ -68,6 +71,7 @@ com\rays\pro4\Bean\DropdownListBean.class
 com\rays\pro4\Bean\CollegeBean.class
 com\rays\proj4\Test\Coursetest.class
 com\rays\pro4\controller\TimeTableListCtl.class
+com\rays\pro4\Bean\TaskBean.class
 com\rays\pro4\Model\TimeTableModel.class
 com\rays\pro4\controller\BaseCtl.class
 com\rays\pro4\Util\EmailBuilder.class

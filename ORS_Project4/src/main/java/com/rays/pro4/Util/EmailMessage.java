@@ -3,7 +3,7 @@ package com.rays.pro4.Util;
 /**
  * Contains Email Message.
  * 
- * @author Aniket sirota
+ * @author Prabhakar Mandloi
  *
  */
 
