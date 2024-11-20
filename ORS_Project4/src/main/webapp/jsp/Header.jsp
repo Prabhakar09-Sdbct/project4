@@ -86,7 +86,9 @@
 					href="<%=ORSView.TASK_CTL%>">Add Task</b></a> | <a
 					href="<%=ORSView.TASK_LIST_CTL%>">Task List</b></a>| <a
 					href="<%=ORSView.PAYMENT_RECORD_CTL%>">Add Payment Record</b></a> | <a
-					href="<%=ORSView.PAYMENT_RECORD_LIST_CTL%>">Payment Record List</b> | </a> <a target="blank"
+					href="<%=ORSView.PAYMENT_RECORD_LIST_CTL%>">Payment Record List</b> | </a> <a
+					href="<%=ORSView.CUSTOMER_CTL%>">Add Customer</b></a> | <a
+					href="<%=ORSView.CUSTOMER_LIST_CTL%>">Customer List</b></a> | <a target="blank"
 					href="<%=ORSView.JAVA_DOC_VIEW%>">Java Doc</b></a> | <%
  }
  %> <%

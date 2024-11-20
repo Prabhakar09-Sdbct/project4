@@ -225,8 +225,8 @@ public class PaymentRecordModel {
 			if (bean.getId() > 0) {
 				sql.append(" AND id= " + bean.getId());
 			}
-			if (bean.getTransactionId() != null && bean.getTransactionId().length() > 0) {
-				sql.append(" AND transaction_id like '" + bean.getTransactionId() + "%'");
+			if (bean.getPaymentMethod() != null && bean.getPaymentMethod().length() > 0) {
+				sql.append(" AND payment_method like '" + bean.getPaymentMethod() + "%'");
 			}
 			if (bean.getAmount() > 0) {
 				sql.append(" AND amount like '" + bean.getAmount() + "%'");
@@ -244,12 +244,10 @@ public class PaymentRecordModel {
 		Connection conn = null;
 		try {
 			conn = JDBCDataSource.getConnection();
-			System.out.println("conn"+conn);
 			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 
 			ResultSet rs = pstmt.executeQuery();
 			
-			System.out.println(" rs size"+rs);
 			while (rs.next()) {
 				bean = new PaymentRecordBean();
 				bean.setId(rs.getLong(1));
@@ -273,7 +271,6 @@ public class PaymentRecordModel {
 			JDBCDataSource.closeConnection(conn);
 		}
 		log.debug("Model search End");
-		System.out.println("list >>>>>>>>>>"+list.size());
 		return list;
 	}
 

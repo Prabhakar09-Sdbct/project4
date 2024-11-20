@@ -1,3 +1,5 @@
+<%@page import="com.rays.pro4.controller.CustomerListCtl"%>
+<%@page import="java.util.HashMap"%>
 <%@page import="com.rays.pro4.Bean.PaymentRecordBean"%>
 <%@page import="com.rays.pro4.controller.PaymentRecordListCtl"%>
 <%@page import="com.rays.pro4.Util.HTMLUtility"%>
@@ -29,8 +31,8 @@
 <body>
 	<%@include file="Header.jsp"%>
 	<div align="center">
-		<h1 align="center" style="margin-bottom: -15; color: navy;">Payment Record
-			List</h1>
+		<h1 align="center" style="margin-bottom: -15; color: navy;">Payment
+			Record List</h1>
 
 		<div style="height: 15px; margin-bottom: 12px">
 			<h3>
@@ -45,37 +47,58 @@
 		<form action="<%=ORSView.PAYMENT_RECORD_LIST_CTL%>" method="post">
 
 			<%
-				int pageNo = ServletUtility.getPageNo(request);
-				int pageSize = ServletUtility.getPageSize(request);
-				int index = ((pageNo - 1) * pageSize) + 1;
-				int nextPageSize = DataUtility.getInt(request.getAttribute("nextListSize").toString());
+			int pageNo = ServletUtility.getPageNo(request);
+			int pageSize = ServletUtility.getPageSize(request);
+			int index = ((pageNo - 1) * pageSize) + 1;
+			int nextPageSize = DataUtility.getInt(request.getAttribute("nextListSize").toString());
 
-				@SuppressWarnings("unchecked")
-				List<PaymentRecordBean> list = (List<PaymentRecordBean>) ServletUtility.getList(request);
-				Iterator<PaymentRecordBean> it = list.iterator();
-				
+			@SuppressWarnings("unchecked")
+			List<PaymentRecordBean> list = (List<PaymentRecordBean>) ServletUtility.getList(request);
+			Iterator<PaymentRecordBean> it = list.iterator();
 			%>
-			<% System.out.println("list.size()"+list.size()); %>
+			<%
+			System.out.println("list.size()" + list.size());
+			%>
 
-   <%if (list.size() != 0) { %>
+			<%
+			if (list.size() != 0) {
+			%>
 			<input type="hidden" name="pageNo" value="<%=pageNo%>"><input
 				type="hidden" name="pageSize" value="<%=pageSize%>">
 
+			<table width="80%" align="center">
+				<tr>
+					<td align="center">
+						&nbsp; <label><b>Payment Method :</b></label> <%
+ HashMap<String, String> map = new HashMap<>();
+ map.put("UPI", "UPI");
+ map.put("Card", "Card");
+ %> <%=HTMLUtility.getList("paymentMethod", bean.getPaymentMethod(), map)%> 
+ 
+						&nbsp; <input type="submit" name="operation"
+						value="<%=PaymentRecordListCtl.OP_SEARCH%>"> &nbsp; <input
+						type="submit" name="operation"
+						value="<%=PaymentRecordListCtl.OP_RESET%>"></td>
+				</tr>
+			</table>
+<br>
 			<table border="1" width="100%" align="center" cellpadding=6px
 				cellspacing=".2">
 				<tr style="background: skyblue;">
 					<th><input type="checkbox" id="select_all" name="select">
-						</th>
+					</th>
 					<th width="5%">S.No</th>
-					<th width="30%">Subject Name</th>
-					<th width="15%">Course Name</th>
-					<th width="40%">Description</th>
+					<th width="30%">Transaction Id</th>
+					<th width="15%">Amount</th>
+					<th width="15%">Date</th>
+					<th width="15%">Transaction Status</th>
+					<th width="40%">Payment Method</th>
 					<th width="5%">Edit</th>
 				</tr>
 
 				<%
-					while (it.hasNext()) {
-							bean = it.next();
+				while (it.hasNext()) {
+					bean = it.next();
 				%>
 				<tr>
 					<td><input type="checkbox" class="checkbox" name="ids"
@@ -83,12 +106,14 @@
 					<td style="text-align: center;"><%=index++%></td>
 					<td style="text-align: center; text-transform: capitalize;"><%=bean.getTransactionId()%></td>
 					<td style="text-align: center; text-transform: capitalize;"><%=bean.getAmount()%></td>
+					<td style="text-align: center; text-transform: capitalize;"><%=bean.getTransactionDate()%></td>
+					<td style="text-align: center; text-transform: capitalize;"><%=bean.getStatus()%></td>
 					<td style="text-align: center; text-transform: capitalize;"><%=bean.getPaymentMethod()%></td>
 					<td style="text-align: center;"><a
 						href="PaymentRecordCtl?id=<%=bean.getId()%>">Edit</a></td>
 				</tr>
 				<%
-					}
+				}
 				%>
 			</table>
 			<table style="width: 100%">
@@ -109,8 +134,8 @@
 
 			</table>
 			<%
-				}
-				if (list.size() == 0) {
+			}
+			if (list.size() == 0) {
 			%>
 			<table>
 				<tr>
@@ -119,7 +144,7 @@
 				</tr>
 			</table>
 			<%
-				}
+			}
 			%>
 		</form>
 	</div>

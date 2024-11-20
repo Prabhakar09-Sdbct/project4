@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import com.rays.pro4.Bean.BaseBean;
 import com.rays.pro4.Bean.PaymentRecordBean;
 import com.rays.pro4.Exception.ApplicationException;
 import com.rays.pro4.Exception.DatabaseException;
@@ -30,6 +31,32 @@ import com.rays.pro4.Util.ServletUtility;
 public class PaymentRecordListCtl extends BaseCtl{
 
 	private static Logger log = Logger.getLogger(PaymentRecordListCtl.class);
+	
+	/* (non-Javadoc)
+	 * @see in.co.rays.ors.controller.BaseCtl#populateBean(javax.servlet.http.HttpServletRequest)
+	 */
+	@Override
+	protected BaseBean populateBean(HttpServletRequest request) {
+
+		log.debug("PaymentRecordCtl Method populatebean Started");
+
+		PaymentRecordBean bean = new PaymentRecordBean();
+
+		bean.setId(DataUtility.getLong(request.getParameter("id")));
+		bean.setTransactionId(DataUtility.getString(request.getParameter("transactionId")));
+		bean.setAmount(DataUtility.getDouble(request.getParameter("amount")));
+		bean.setTransactionDate(DataUtility.getDate(request.getParameter("transactionDate")));
+		bean.setStatus(DataUtility.getString(request.getParameter("status")));
+		bean.setPaymentMethod(DataUtility.getString(request.getParameter("paymentMethod")));
+		
+	//	System.out.println(">>>>>>>>>>>>>" +request.getParameter("studentId"));
+
+		populateDTO(bean, request);
+		System.out.println("Population done");
+		log.debug("PaymentRecordCtl Method populatebean Ended");
+
+		return bean;
+	}
 
 	/**
 	 * Contains Display logics
@@ -135,7 +162,7 @@ public class PaymentRecordListCtl extends BaseCtl{
 				ServletUtility.redirect(ORSView.PAYMENT_RECORD_LIST_CTL, request, response);
 				return;
 			} else if (OP_BACK.equalsIgnoreCase(op)) {
-				ServletUtility.redirect(ORSView.PAYMENT_RECORD_CTL, request, response);
+				ServletUtility.redirect(ORSView.PAYMENT_RECORD_LIST_CTL, request, response);
 				return;
 			}
 
