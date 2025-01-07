@@ -59,7 +59,7 @@ public class CustomerListCtl extends BaseCtl {
 	protected BaseBean populateBean(HttpServletRequest request) {
 		CustomerBean bean = new CustomerBean();
 
-		// bean.setName(DataUtility.getString(request.getParameter("name")));
+		bean.setEmail(DataUtility.getString(request.getParameter("email")));
 		bean.setGender(DataUtility.getString(request.getParameter("gender")));
 
 		bean.setId(DataUtility.getLong(request.getParameter("Customerid")));

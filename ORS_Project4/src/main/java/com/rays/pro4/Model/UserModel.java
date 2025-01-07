@@ -20,6 +20,7 @@ import com.rays.pro4.Util.EmailBuilder;
 import com.rays.pro4.Util.EmailMessage;
 import com.rays.pro4.Util.EmailUtility;
 import com.rays.pro4.Util.JDBCDataSource;
+import com.rays.pro4.Util.ServletUtility;
 
 /**
  * JDBC Implementation of UserModel.
@@ -591,6 +592,7 @@ public class UserModel {
 
 		if (userData == null) {
 			System.out.println("Email Id does not exist !");
+			throw new RecordNotFoundException("Email Id does not exist !");
 		}
 
 		HashMap<String, String> map = new HashMap<String, String>();

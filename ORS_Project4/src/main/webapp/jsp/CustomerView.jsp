@@ -9,7 +9,7 @@
 	pageEncoding="ISO-8859-1"%>
 <html>
 <head>
-<title>Add College</title>
+<title>Add Customer</title>
 <link rel="icon" type="image/png"
 	href="<%=ORSView.APP_CONTEXT%>/img/logo.png" sizes="16x16" />
 </head>

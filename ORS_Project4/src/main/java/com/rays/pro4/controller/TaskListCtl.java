@@ -33,6 +33,7 @@ public class TaskListCtl extends BaseCtl {
 		bean.setDetails(DataUtility.getString(request.getParameter("details")));
 		bean.setAssignedTo(DataUtility.getString(request.getParameter("assignedTo")));
 		bean.setStatus(DataUtility.getString(request.getParameter("status")));
+		System.out.println("createdDateTime"+request.getParameter("createdDateTime"));
 		populateDTO(bean, request);
 		return bean;
 	}

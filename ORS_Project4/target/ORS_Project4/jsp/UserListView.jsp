@@ -38,23 +38,23 @@
 			</div>
 
 			<%
-				List rlist = (List) request.getAttribute("RoleList");
+			List rlist = (List) request.getAttribute("RoleList");
 
-				List ulist = (List) request.getAttribute("LoginId");
+			List ulist = (List) request.getAttribute("LoginId");
 
-				int next = DataUtility.getInt(request.getAttribute("nextlist").toString());
+			int next = DataUtility.getInt(request.getAttribute("nextlist").toString());
 			%>
 
 
 			<%
-				int pageNo = ServletUtility.getPageNo(request);
-				int pageSize = ServletUtility.getPageSize(request);
-				int index = ((pageNo - 1) * pageSize) + 1;
+			int pageNo = ServletUtility.getPageNo(request);
+			int pageSize = ServletUtility.getPageSize(request);
+			int index = ((pageNo - 1) * pageSize) + 1;
 
-				List list = ServletUtility.getList(request);
-				Iterator<UserBean> it = list.iterator();
+			List list = ServletUtility.getList(request);
+			Iterator<UserBean> it = list.iterator();
 
-				if (list.size() != 0) {
+			if (list.size() != 0) {
 			%>
 			<table width="100%" align="center">
 				<tr>
@@ -69,7 +69,7 @@
 					</label> <input type="text" name="loginid" placeholder="Enter Login-Id"
 						value="<%=ServletUtility.getParameter("login", request)%>">
 						&emsp; <label>Role</font> :
-					</label> <%=HTMLUtility.getList("roleid", String.valueOf(bean.getRoleId()), rlist) %>
+					</label> <%=HTMLUtility.getList("roleid", String.valueOf(bean.getRoleId()), rlist)%>
 						&nbsp; <%-- <%=HTMLUtility.getList("loginid", String.valueOf(bean.getRoleId()), ulist)%>
  --%> &nbsp; <input type="submit" name="operation"
 						value="<%=UserListCtl.OP_SEARCH%>"> &nbsp; <input
@@ -89,7 +89,7 @@
 					<th>S.No.</th>
 					<th>FirstName</th>
 					<th>LastName</th>
-			<%--		<th>Role</th>  --%>
+					<th>Role</th> 
 					<th>LoginId</th>
 					<th>Gender</th>
 					<th>Date Of Birth</th>
@@ -98,11 +98,11 @@
 				</tr>
 
 				<%
-					while (it.hasNext()) {
-							bean = it.next();
-							RoleModel model = new RoleModel();
-							RoleBean rolebean = new RoleBean();
-							rolebean = model.findByPK(bean.getRoleId());
+				while (it.hasNext()) {
+					bean = it.next();
+					RoleModel model = new RoleModel();
+					RoleBean rolebean = new RoleBean();
+					rolebean = model.findByPK(bean.getRoleId());
 				%>
 
 
@@ -114,7 +114,7 @@
 					<td><%=index++%></td>
 					<td><%=bean.getFirstName()%></td>
 					<td><%=bean.getLastName()%></td>
-			   
+					<td><%=rolebean.getName()%></td>
 					<td><%=bean.getLogin()%></td>
 					<td><%=bean.getGender()%></td>
 					<td><%=bean.getDob()%></td>
@@ -124,7 +124,7 @@
 						onclick="return false;" <%}%>>Edit</a></td>
 				</tr>
 				<%
-					}
+				}
 				%>
 			</table>
 
@@ -132,17 +132,17 @@
 				<tr>
 					<th></th>
 					<%
-						if (pageNo == 1) {
+					if (pageNo == 1) {
 					%>
 					<td><input type="submit" name="operation" disabled="disabled"
 						value="<%=UserListCtl.OP_PREVIOUS%>"></td>
 					<%
-						} else {
+					} else {
 					%>
 					<td><input type="submit" name="operation"
 						value="<%=UserListCtl.OP_PREVIOUS%>"></td>
 					<%
-						}
+					}
 					%>
 
 					<td><input type="submit" name="operation"
@@ -169,13 +169,13 @@
 				</tr>
 			</table>
 			<%
-				}
-				if (list.size() == 0) {
+			}
+			if (list.size() == 0) {
 			%>
 			<td align="center"><input type="submit" name="operation"
 				value="<%=UserListCtl.OP_BACK%>"></td>
 			<%
-				}
+			}
 			%>
 
 			<input type="hidden" name="pageNo" value="<%=pageNo%>"> <input

@@ -138,6 +138,10 @@ public class ForgetPasswordCtl extends BaseCtl {
 			ServletUtility.redirect(ORSView.FORGET_PASSWORD_CTL, request, response);
 			return;
 		}
+		
+		
+		System.out.println("bean.getId"+bean.getLogin());
+		ServletUtility.setBean(bean, request);
 		ServletUtility.forward(getView(), request, response);
 
 		log.debug("ForgetPasswordCtl Method doPost Ended");

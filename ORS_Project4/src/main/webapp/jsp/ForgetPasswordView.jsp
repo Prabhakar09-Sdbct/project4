@@ -1,3 +1,4 @@
+<%@page import="com.rays.pro4.Util.DataUtility"%>
 <%@page import="com.rays.pro4.controller.ForgetPasswordCtl"%>
 <%@page import="com.rays.pro4.Util.ServletUtility"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -37,7 +38,7 @@ height: 580px;
 
             <table align="center">
                 <tr><th>Email Id <span style="color:red ">*</span></th>
-                <td><input type="text" name="login" size="25"  placeholder="Enter the Valid-Email Id" value="<%=ServletUtility.getParameter("login", request)%>"></td>
+                <td><input type="text" name="login" size="25"  placeholder="Enter the Valid-Email Id" value="<%=DataUtility.getStringData(bean.getLogin())%>"></td>
                 <td style="position: fixed"><font color="red"> <%=ServletUtility.getErrorMessage("login", request)%></font></td>
 		
 		<tr><th style="padding: 3px"></th></tr>

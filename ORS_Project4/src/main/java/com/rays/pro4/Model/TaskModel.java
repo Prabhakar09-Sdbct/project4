@@ -144,6 +144,10 @@ public class TaskModel {
 			if (bean.getStatus() != null && bean.getStatus().length() > 0) {
 				sql.append(" and status like'" + bean.getStatus() + "%'");
 			}
+			
+			if (bean.getCreatedDatetime() != null) {
+				sql.append(" and created_datetime like'" + bean.getCreatedDatetime() + "%'");
+			}
 		}
 
 		if (pageSize > 0) {
