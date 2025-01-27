@@ -20,7 +20,6 @@ import com.rays.pro4.Util.EmailBuilder;
 import com.rays.pro4.Util.EmailMessage;
 import com.rays.pro4.Util.EmailUtility;
 import com.rays.pro4.Util.JDBCDataSource;
-import com.rays.pro4.Util.ServletUtility;
 
 /**
  * JDBC Implementation of UserModel.
@@ -315,8 +314,8 @@ public class UserModel {
 			if (bean.getPassword() != null && bean.getPassword().length() > 0) {
 				sql.append(" AND PASSWORD like '" + bean.getPassword() + "%'");
 			}
-			if (bean.getDob() != null && bean.getDob().getDate() > 0) {
-				sql.append(" AND DOB = " + bean.getGender());
+			if (bean.getDob() != null && bean.getDob().getTime() > 0) {
+				sql.append(" AND DOB like '" + new java.sql.Date(bean.getDob().getTime()) + "%'");
 			}
 			if (bean.getMobileNo() != null && bean.getMobileNo().length() > 0) {
 				sql.append(" AND MOBILE_NO = " + bean.getMobileNo());
@@ -336,6 +335,8 @@ public class UserModel {
 			sql.append(" Limit " + pageNo + ", " + pageSize);
 			// sql.append(" limit " + pageNo + "," + pageSize);
 		}
+		
+		System.out.println("sql"+sql);
 		List list = new ArrayList();
 		Connection conn = null;
 		try {

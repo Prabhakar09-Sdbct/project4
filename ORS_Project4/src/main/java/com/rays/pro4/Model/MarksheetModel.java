@@ -392,6 +392,8 @@ public class MarksheetModel {
 			pageNo = (pageNo - 1) * pageSize;
 			sql.append(" limit " + pageNo + "," + pageSize);
 		}
+		
+		System.out.println("sql merit "+ sql);
 		Connection conn = null;
 		try {
 			conn = JDBCDataSource.getConnection();

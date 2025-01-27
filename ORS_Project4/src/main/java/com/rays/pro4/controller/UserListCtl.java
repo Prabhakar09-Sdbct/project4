@@ -69,6 +69,7 @@ public class UserListCtl extends BaseCtl{
 
 		bean.setRoleId(DataUtility.getLong(request.getParameter("roleid")));
 		bean.setLogin(DataUtility.getString(request.getParameter("loginid")));
+		bean.setDob(DataUtility.getDate(request.getParameter("dob")));
 
 		return bean;
 	}
@@ -106,7 +107,7 @@ public class UserListCtl extends BaseCtl{
 
 			request.setAttribute("nextlist", nextList.size());
 
-			ServletUtility.setList(list, request);
+//			ServletUtility.setList(list, request);
 			if (list == null || list.size() == 0) {
 				ServletUtility.setErrorMessage("No record found ", request);
 			}

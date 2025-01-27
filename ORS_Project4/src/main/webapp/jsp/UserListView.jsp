@@ -17,6 +17,21 @@
 <script src="<%=ORSView.APP_CONTEXT%>/js/jquery.min.js"></script>
 <script src="<%=ORSView.APP_CONTEXT%>/js/Checkbox11.js"></script>
 
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+	$(function() {
+		$("#udate").datepicker({
+			changeMonth : true,
+			changeYear : true,
+			yearRange : '1980:2006',
+		});
+	});
+</script>
+
 </head>
 <body>
 	<jsp:useBean id="bean" class="com.rays.pro4.Bean.UserBean"
@@ -70,8 +85,13 @@
 						value="<%=ServletUtility.getParameter("login", request)%>">
 						&emsp; <label>Role</font> :
 					</label> <%=HTMLUtility.getList("roleid", String.valueOf(bean.getRoleId()), rlist)%>
-						&nbsp; <%-- <%=HTMLUtility.getList("loginid", String.valueOf(bean.getRoleId()), ulist)%>
- --%> &nbsp; <input type="submit" name="operation"
+						&nbsp; <%-- <%=HTMLUtility.getList("loginid", String.valueOf(bean.getRoleId()), ulist)%> --%>
+
+						<label>DOB</font> :
+					</label> <input type="text" id="udate" name="dob" placeholder="Enter Dob"
+						value="<%=ServletUtility.getParameter("dob", request)%>">
+
+						&nbsp; <input type="submit" name="operation"
 						value="<%=UserListCtl.OP_SEARCH%>"> &nbsp; <input
 						type="submit" name="operation" value="<%=UserListCtl.OP_RESET%>">
 
@@ -89,7 +109,7 @@
 					<th>S.No.</th>
 					<th>FirstName</th>
 					<th>LastName</th>
-					<th>Role</th> 
+					<th>Role</th>
 					<th>LoginId</th>
 					<th>Gender</th>
 					<th>Date Of Birth</th>
