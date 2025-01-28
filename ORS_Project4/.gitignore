@@ -1,2 +1,8 @@
 /target/
-/mysql-data/
+mysql-data/mysql.sock
+mysql-data/*.pid
+mysql-data/*.log
+mysql-data/*.err
+mysql-data/*.cnf
+mysql-data/ib_*
+
