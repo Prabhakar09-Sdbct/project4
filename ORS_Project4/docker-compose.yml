@@ -12,7 +12,7 @@ services:
       - mynetwork
     volumes:
       - ./mysql-data:/var/lib/mysql  # Persistent data storage
-      - .project4.sql:/docker-entrypoint-initdb.d/project4.sql  # SQL initialization script
+#      - .project4.sql:/docker-entrypoint-initdb.d/project4.sql  # SQL initialization script
     healthcheck:
       test: ["CMD-SHELL", "mysqladmin ping -uroot -proot --silent"]
       interval: 10s
