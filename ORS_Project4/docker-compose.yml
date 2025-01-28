@@ -1,4 +1,4 @@
-version: '3.8'  # Updated to the latest version for advanced features
+version: '3'
 services:
   mysql:
     image: mysql:8.0
@@ -11,13 +11,8 @@ services:
     networks:
       - mynetwork
     volumes:
-      - ./mysql-data:/var/lib/mysql  # Persistent data storage
-      - ./project4.sql:/docker-entrypoint-initdb.d/project4.sql  # SQL initialization script
-    healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -uroot -proot --silent"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+      - ./mysql-data:/var/lib/mysql
+#      - D:/Rays/project4.sql:/docker-entrypoint-initdb.d/project4.sql  # Mount the SQL file
 
   webapp:
     build:
@@ -28,10 +23,9 @@ services:
     networks:
       - mynetwork
     depends_on:
-      mysql:
-        condition: service_healthy
+      - mysql
     environment:
-      DATABASE_URL: jdbc:mysql://mysql:3306/project4
+      - DATABASE_URL=jdbc:mysql://mysql:3306/project4
 
 networks:
   mynetwork:
