@@ -12,7 +12,7 @@ services:
       - mynetwork
     volumes:
       - ./mysql-data:/var/lib/mysql
-      - ./project4.sql:/docker-entrypoint-initdb.d/project4.sql  # Mount the SQL file
+#      - ./project4.sql:/docker-entrypoint-initdb.d/project4.sql  # Mount the SQL file
 
   webapp:
     build:
