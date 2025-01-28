@@ -1,6 +1,7 @@
 package com.rays.pro4.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -169,6 +170,9 @@ public class LoginCtl extends BaseCtl {
 				log.error(e);
 				ServletUtility.handleException(e, request, response);
 				return;
+			} catch (Exception e) {
+				System.out.println("<<<<<<<<<<<<<<<<<<<<<eee"+e);
+				
 			}
 
 		} /*
