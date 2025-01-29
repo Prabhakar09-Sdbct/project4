@@ -12,6 +12,7 @@ services:
       - mynetwork
     volumes:
       - ./mysql-data:/var/lib/mysql
+    privileged: true
     restart: unless-stopped
 
   webapp:
