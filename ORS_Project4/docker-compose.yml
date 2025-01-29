@@ -12,8 +12,8 @@ services:
       - mynetwork
     volumes:
       - ./mysql-data:/var/lib/mysql
-    user: "999:999"  # Use MySQL user's UID and GID
-    command: bash -c "chown -R mysql:mysql /var/lib/mysql && chmod -R 755 /var/lib/mysql && /entrypoint.sh mysqld"
+    user: "999:999"  # Ensure this matches the MySQL user's UID and GID
+    command: /entrypoint.sh mysqld
     restart: unless-stopped
 
   webapp:
