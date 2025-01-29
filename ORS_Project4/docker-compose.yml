@@ -13,6 +13,7 @@ services:
     volumes:
       - ./mysql-data:/var/lib/mysql
       - ./project4.sql:/docker-entrypoint-initdb.d/project4.sql  # Mount the SQL file
+    user: root
     command: --init-file /docker-entrypoint-initdb.d/project4.sql  # Run only once
     restart: unless-stopped  # Add this line
     
