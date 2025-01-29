@@ -12,7 +12,6 @@ services:
       - mynetwork
     volumes:
       - ./mysql-data:/var/lib/mysql
-    user: "999:999"
     restart: unless-stopped
 
   webapp:
