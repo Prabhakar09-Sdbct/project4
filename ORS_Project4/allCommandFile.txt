@@ -1,0 +1,376 @@
+#AWS deploy on tomcat9===================================
+ssh -i "C:\Users\ASUS\Downloads\template.pem" ubuntu@13.60.218.69
+
+sudo apt update
+
+apt install openjdk-11-jdk
+
+sudo apt install tomcat9
+
+sudo apt install mysql-server
+
+sudo su
+
+chmod 777 /var/lib/tomcat9/webapps
+
+ls /var/lib/tomcat9/webapps
+
+sudo systemctl restart tomcat9
+
+#AWS  Mysql===============================================
+
+mysql -u root -p
+
+show databases;
+
+create database project4;
+
+use project4;
+
+source /var/lib/tomcat9/webapps/project4.sql
+
+create user "rays"@"%" identified by "indore@123";
+
+grant all privileges on *.* to "rays"@"%" with grant option;
+
+flush privilages;
+ 
+ 
+#check for localhost for remote=========================== 
+sudo ss -tuln | grep 3306
+ 
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+
+sudo systemctl restart mysql
+
+
+
+#docker html page or template===================================================
+
+docker build -t my-demo-app .
+docker run -d -p 8080:8080 my-demo-app
+
+
+
+#aws nginx====================================================
+sudo apt install nginx
+
+sudo systemctl start nginx
+
+sudo systemctl enable nginx
+
+sudo systemctl status nginx
+
+/var/log/nginx/
+
+/var/log/nginx/etc/nginx/sites-enabled/
+
+/etc/nginx/nginx.conf
+
+/var/www/html
+
+#Dockerfile configuration=================================
+1. first create a Dockerfile text file and paste below command
+
+# Use the official Tomcat 9 image from Docker Hub
+FROM tomcat:9.0
+
+# Set environment variables for Tomcat
+ENV CATALINA_HOME /usr/local/tomcat
+
+# Create a directory for your template
+RUN mkdir -p $CATALINA_HOME/webapps/ROOT
+
+# Copy your template files into the ROOT directory (for default web application)
+COPY ./new_resume.html /usr/local/tomcat/webapps/ROOT/
+
+# Expose port 8080 for Tomcat
+EXPOSE 8080
+
+# Start Tomcat server
+CMD ["catalina.sh", "run"]
+
+
+
+#for docker project4======================================
+
+docker-compose build
+
+docker-compose up
+
+
+
+docker hub creadential ==================================
+
+docker login
+
+username =  prabhakarmandloi
+password = Prabhakar@382
+
+
+local to docker hub ===============================================
+
+docker images
+
+docker tag my-d-app:latest prabhakarmandloi/d:latest
+
+docker push prabhakarmandloi/d:latest
+
+
+
+
+install docker on aws=====================================
+
+sudo kill -9 1962
+sudo killall apt apt-get
+sudo apt-get update
+sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+sudo apt-get update
+sudo apt-get install -y docker-ce
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo usermod -aG docker $USER
+docker --version
+
+pull images from local to aws server =====================
+
+than  => docker login
+
+docker pull prabhakarmandloi/prabha:latest
+
+ sudo docker run -d -p 8080:8080 prabhakarmandloi/prabha:latest
+ 
+ docker ps
+ 
+ sudo docker ps -a
+ 
+ de876ce9abc0 => this container id replace it with new
+ 
+ docker exec -it 90a1f6b961f0 catalina.sh configtest
+ 
+ 
+ 
+exsting start docker login =================================
+ 
+ sudo docker ps -a
+ 
+sudo docker run -d -p 8080:8080 prabhakarmandloi/prabha:latest
+
+
+
+CI/CD pipline for git hub, docker and docker for hub resume or template ===========
+
+pipeline {
+    agent any
+    
+    stages {
+        stage('Cleanup') {
+            steps {
+                deleteDir() // Clean workspace
+            }
+        }
+        
+        stage('Clone Repository') {
+            steps {
+                // Cloning your GitHub repository using the credentials you set up
+                git credentialsId: 'github-credentials', url: 'https://github.com/Prabhakar09-Sdbct/JenkinsViaDocker.git', branch: 'main'
+            }
+        }
+        
+        stage('List Files') {
+            steps {
+                // Listing files in the workspace
+                bat 'dir'
+            }
+        }
+        
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Building the Docker image
+                    bat 'docker build -t prabhakarmandloi/jenkins_via_docker:latest .'
+                }
+            }
+        }
+        
+        stage('Run Docker Container') {
+            steps {
+                script {
+                    bat '''
+                        docker rm -f jenkins_via_docker_container || echo "Container does not exist"
+                        docker run -d -p 8080:8080 --name jenkins_via_docker_container prabhakarmandloi/jenkins_via_docker:latest
+                    '''
+                }
+            }
+        }
+        
+        stage('Wait for Tomcat to Start') {
+            steps {
+                script {
+                    // Adding a delay to allow Tomcat to fully initialize
+                    bat 'ping -n 11 127.0.0.1 > nul'
+                }
+            }
+        }
+        
+        stage('Check Tomcat Status') {
+            steps {
+                script {
+                    // Checking Tomcat server status
+                    bat '''
+                        docker exec jenkins_via_docker_container curl -I http://localhost:8080
+                    '''
+                }
+            }
+        }
+        
+        stage('Push Docker Image to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
+                    script {
+                        echo "Docker Hub Username: ${env.DOCKERHUB_USERNAME}"
+                        echo "Docker Hub Password Length: ${env.DOCKERHUB_PASSWORD.length()}"  // Check length to confirm it's set
+                        bat '''
+                            echo %DOCKERHUB_PASSWORD% | docker login -u %DOCKERHUB_USERNAME% -p %DOCKERHUB_PASSWORD%
+                            if %ERRORLEVEL% neq 0 exit /b %ERRORLEVEL%
+                            docker tag prabhakarmandloi/jenkins_via_docker:latest %DOCKERHUB_USERNAME%/jenkins_via_docker:latest
+                            docker push %DOCKERHUB_USERNAME%/jenkins_via_docker:latest
+                        '''
+                    }
+                }
+            }
+        }
+    }
+    
+    post {
+        always {
+            // Clean workspace after the build is done
+            echo 'Cleaning up...'
+            deleteDir()
+        }
+    }
+}
+
+
+
+===================================================================
+
+github token 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
+
+
+docker hub dckr_pat_9c1RvqXWVGpnrpEmtV9hFaBnuG0
+
+publicv dckr_pat_mkq5esgkUaFnGmCvSs5K-yJE9kk
+
+CI/CD  pipeline From jenkins github to docker project 4 ===================================================================
+
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = 'prabhakarmandloi/ors_project4' // Docker image name
+        IMAGE_TAG = 'latest' // Image tag
+    }
+
+    stages {
+        stage('Cleanup Workspace') {
+            steps {
+                deleteDir() // Clean up the workspace
+            }
+        }
+
+        stage('Clone Repository') {
+            steps {
+                git credentialsId: 'github-credentials', url: 'https://github.com/Prabhakar09-Sdbct/project4.git', branch: 'main'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    dir('ORS_Project4') {
+                        // Build the Docker image
+                        def buildResult = bat(script: "docker build -t ${env.IMAGE_NAME}:${env.IMAGE_TAG} .", returnStatus: true)
+                        
+                        // Check if the build was successful
+                        if (buildResult != 0) {
+                            error "Docker build failed!"
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('Start or Update Application with Docker Compose') {
+            steps {
+                script {
+                    dir('ORS_Project4') { // Navigate to the ORS_Project4 directory
+                        bat '''
+                            docker-compose up -d --build
+                        '''
+                    }
+                }
+            }
+        }
+        
+        stage('Wait for MySQL') {
+             steps {
+                 script {
+               // Wait for MySQL to be fully up and running
+                bat 'ping -n 20 127.0.0.1 > nul'
+            }
+         }
+       }
+
+
+        stage('Wait for Tomcat to Start') {
+            steps {
+                script {
+                    // Adding a delay to allow Tomcat to fully initialize
+                    bat 'ping -n 11 127.0.0.1 > nul'
+                }
+            }
+        }
+        
+        stage('Check Tomcat Status') {
+            steps {
+                script {
+                    // Checking Tomcat server status
+                    bat '''
+                        docker exec ORS_Project4-webapp curl -I http://localhost:8080
+                    '''
+                }
+            }
+        }
+        
+        stage('Push Docker Image to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
+                    script {
+                        echo "Docker Hub Username: ${env.DOCKERHUB_USERNAME}"
+                        echo "Docker Hub Password Length: ${env.DOCKERHUB_PASSWORD.length()}"  // Check length to confirm it's set
+                        bat '''
+                            echo %DOCKERHUB_PASSWORD% | docker login -u %DOCKERHUB_USERNAME% -p %DOCKERHUB_PASSWORD%
+                            if %ERRORLEVEL% neq 0 exit /b %ERRORLEVEL%
+                            docker tag prabhakarmandloi/ors_project4:latest %DOCKERHUB_USERNAME%/ors_project4:latest
+                            docker push %DOCKERHUB_USERNAME%/ors_project4:latest
+                        '''
+                    }
+                }
+            }
+        }
+        
+    }
+
+    post {
+        always {
+            echo 'Cleaning workspace...'
+            deleteDir() // Clean up workspace
+        }
+    }
+}
