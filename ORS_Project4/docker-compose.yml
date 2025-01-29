@@ -10,8 +10,9 @@ services:
       - "3308:3306"
     networks:
       - mynetwork
-#    volumes:
+    volumes:
 #      - ./mysql-data:/var/lib/mysql
+      - ./project4.sql:/docker-entrypoint-initdb.d/project4.sql  # Mount the SQL file
     restart: unless-stopped
 
   webapp:
