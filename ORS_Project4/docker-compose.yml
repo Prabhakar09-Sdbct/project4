@@ -12,10 +12,10 @@ services:
       - mynetwork
     volumes:
       - ./mysql-data:/var/lib/mysql
+    user: "999:999"  # Use MySQL user's UID and GID
     command: bash -c "chown -R mysql:mysql /var/lib/mysql && chmod -R 755 /var/lib/mysql && /entrypoint.sh mysqld"
-#      - ./project4.sql:/docker-entrypoint-initdb.d/project4.sql  # Mount the SQL file
-    restart: unless-stopped  # Add this line
-    
+    restart: unless-stopped
+
   webapp:
     build:
       context: .
