@@ -2,6 +2,13 @@ package com.rays.pro4.Bean;
 
 import java.util.Date;
 
+
+/**
+ * PaymentRecord JavaBean encapsulates PaymentRecord attributes.
+ * 
+ * @author Prabhakar Mandloi
+ *
+ */
 public class PaymentRecordBean extends BaseBean {
 
 	private String transactionId;

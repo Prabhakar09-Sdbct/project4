@@ -50,6 +50,8 @@ public interface ORSView {
 	public String DOCTOR_LIST_VIEW = PAGE_FOLDER + "/DoctorListView.jsp";
 	public String PRESCRIPTION_VIEW = PAGE_FOLDER + "/PrescriptionView.jsp";
 	public String PRESCRIPTION_LIST_VIEW = PAGE_FOLDER + "/PrescriptionListView.jsp";
+	public String POSITION_VIEW = PAGE_FOLDER + "/PositionView.jsp";
+	public String POSITION_LIST_VIEW = PAGE_FOLDER + "/PositionListView.jsp";
 	public String ERROR_VIEW = PAGE_FOLDER + "/ErrorView.jsp";
 	// public String ERROR_VIEW5 = PAGE_FOLDER + "/ErrorView5.jsp";
 
@@ -90,6 +92,8 @@ public interface ORSView {
 	public String DOCTOR_LIST_CTL = APP_CONTEXT + "/ctl/DoctorListCtl";
 	public String PRESCRIPTION_CTL = APP_CONTEXT + "/ctl/PrescriptionCtl";
 	public String PRESCRIPTION_LIST_CTL = APP_CONTEXT + "/ctl/PrescriptionListCtl";
+	public String POSITION_CTL = APP_CONTEXT + "/ctl/PositionCtl";
+	public String POSITION_LIST_CTL = APP_CONTEXT + "/ctl/PositionListCtl";
 	public String ERROR_CTL = APP_CONTEXT + "/ErrorCtl";
 
 

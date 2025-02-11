@@ -3,7 +3,7 @@ package com.rays.pro4.Bean;
 import java.util.Date;
 
 /**
- * Student JavaBean encapsulates Doctor attributes.
+ * Doctor JavaBean encapsulates Doctor attributes.
  * 
  * @author Prabhakar Mandloi
  *

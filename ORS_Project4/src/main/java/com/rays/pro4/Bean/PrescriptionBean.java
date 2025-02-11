@@ -3,13 +3,10 @@ package com.rays.pro4.Bean;
 import java.util.Date;
 
 /**
- * Student JavaBean encapsulates Doctor attributes.
+ * Prescription JavaBean encapsulates Prescription attributes.
  * 
  * @author Prabhakar Mandloi
  *
- */
-/**
- * 
  */
 public class PrescriptionBean extends BaseBean {
 

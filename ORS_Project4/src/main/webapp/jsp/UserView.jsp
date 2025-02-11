@@ -27,9 +27,6 @@
     });
   } );
   </script>
-
-
-
 <body>
    <jsp:useBean id="bean" class="com.rays.pro4.Bean.UserBean" scope="request"></jsp:useBean>
    <%@ include file="Header.jsp"%>

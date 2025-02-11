@@ -117,6 +117,8 @@ public class LoginCtl extends BaseCtl {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println(" >>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
 		HttpSession session = request.getSession(true);
 		log.debug(" Method doPost Started");
 

@@ -2,7 +2,7 @@ package com.rays.pro4.Bean;
 
 
 /**
- * Subject TaskBean encapsulates Task attributes.
+ * Task JavaBean encapsulates Task attributes.
  * 
  * @author Prabhakar Mandloi
  *
