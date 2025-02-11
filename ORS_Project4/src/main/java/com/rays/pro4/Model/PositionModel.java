@@ -210,8 +210,8 @@ public class PositionModel {
 			if (bean.getDesignation() != null && bean.getDesignation().length() > 0) {
 				sql.append(" AND DESIGNATION like '" + bean.getDesignation() + "%'");
 			}
-			if (bean.getOpeningDate() != null && bean.getOpeningDate().getDate() > 0) {
-				sql.append(" AND OPENING_DATE = " + bean.getOpeningDate());
+			if (bean.getOpeningDate() != null && bean.getOpeningDate().getTime() > 0) {
+				sql.append(" AND OPENING_DATE like '" + new java.sql.Date(bean.getOpeningDate().getTime()) + "%'");
 			}
 			
 			if (bean.getRequiredExperience() != null && bean.getRequiredExperience().length() > 0) {

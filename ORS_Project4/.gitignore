@@ -1,4 +1,3 @@
-/target/
 mysql-data/mysql.sock
 mysql-data/*.pid
 mysql-data/*.log

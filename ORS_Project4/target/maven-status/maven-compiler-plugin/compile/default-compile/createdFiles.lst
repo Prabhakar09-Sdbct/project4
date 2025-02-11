@@ -15,14 +15,17 @@ com\rays\pro4\controller\ORSView.class
 com\rays\pro4\Bean\PaymentRecordBean.class
 com\rays\pro4\controller\MarksheetMeritListCtl.class
 com\rays\proj4\Test\CollegeModelTest.class
+com\rays\pro4\Bean\PositionBean.class
 com\rays\pro4\controller\UserListCtl.class
 com\rays\pro4\controller\ErrorCtl.class
 com\rays\pro4\controller\TimeTableCtl.class
 com\rays\pro4\controller\LoginCtl.class
 com\rays\pro4\Util\DataUtility.class
 com\rays\pro4\Model\CollegeModel.class
+com\rays\pro4\Model\PositionModel.class
 com\rays\pro4\Util\ServletUtility.class
 com\rays\pro4\Model\StudentModel.class
+com\rays\pro4\controller\PositionListCtl.class
 com\rays\pro4\Bean\RoleBean.class
 com\rays\proj4\Test\StudentTest.class
 com\rays\pro4\controller\PaymentRecordCtl.class
@@ -91,5 +94,6 @@ com\rays\pro4\controller\CustomerListCtl.class
 com\rays\pro4\controller\PrescriptionCtl.class
 com\rays\pro4\controller\PaymentRecordListCtl.class
 com\rays\pro4\Util\EmailBuilder.class
+com\rays\pro4\controller\PositionCtl.class
 com\rays\pro4\controller\RoleListCtl.class
 com\rays\pro4\controller\FacultyListCtl.class

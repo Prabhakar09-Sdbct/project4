@@ -15,8 +15,27 @@
 	href="<%=ORSView.APP_CONTEXT%>/img/logo.png" sizes="16*16" />
 <title>Position List</title>
 
-<script src="<%=ORSView.APP_CONTEXT%>/js/jquery.min.js""></script>
+<script src="<%=ORSView.APP_CONTEXT%>/js/jquery.min.js"></script>
 <script src="<%=ORSView.APP_CONTEXT%>/js/Checkbox11.js"></script>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+	$(function() {
+		$("#udate").datepicker({
+			changeMonth : true,
+			changeYear : true,
+			yearRange : '1980:2020',
+
+		});
+	});
+</script>
 
 
 </head>
@@ -54,6 +73,12 @@
 						type="text" name="designation" placeholder="Enter Designation"
 						Size="25"
 						value="<%=ServletUtility.getParameter("designation", request)%>">
+						
+						&nbsp;
+						<label>Opening Date</font> :
+					</label> <input type="text" id="udate" name="openingDate" placeholder="Enter Opening Date"
+						value="<%=ServletUtility.getParameter("openingDate", request)%>">
+
 						&nbsp; <label>Required Experience:</label> <input type="text"
 						name="requiredExperience" placeholder="Enter Required Experience"
 						Size="25"
