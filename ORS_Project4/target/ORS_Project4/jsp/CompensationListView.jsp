@@ -1,3 +1,4 @@
+<%@page import="com.rays.pro4.Bean.FacultyBean"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="com.rays.pro4.Bean.CompensationBean"%>
 <%@page import="com.rays.pro4.Model.CompensationModel"%>
@@ -45,6 +46,10 @@
 
 	<form action="<%=ORSView.COMPENSATION_LIST_CTL%>" method="post">
 		<%@include file="Header.jsp"%>
+		
+		<%
+		List<FacultyBean> cl = (List<FacultyBean>) request.getAttribute("fList");
+		%>
 
 		<center>
 
@@ -69,10 +74,8 @@
 
 			<table width="100%" align="center">
 				<tr>
-					<td align="center"><label> Staff Member:</label> <input
-						type="text" name="staffMember" placeholder="Enter Staff Member"
-						Size="25"
-						value="<%=ServletUtility.getParameter("staffMember", request)%>">
+					<td align="center"><label> Staff Member:</label> 
+					<%=HTMLUtility.getList("staffMember", String.valueOf(bean.getStaffMember()), cl)%>&emsp;
 
 						&nbsp; <label>Payment Amount:</label> <input type="text"
 						name="paymentAmount" placeholder="Enter Payment Amount" Size="25"
