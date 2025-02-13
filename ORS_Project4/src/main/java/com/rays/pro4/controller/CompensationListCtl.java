@@ -102,7 +102,6 @@ public class CompensationListCtl extends BaseCtl {
 		int pageSize = DataUtility.getInt(PropertyReader.getValue("page.size"));
 
 		CompensationBean bean = (CompensationBean) populateBean(request);
-		String op = DataUtility.getString(request.getParameter("operation"));
 
 		CompensationModel model = new CompensationModel();
 

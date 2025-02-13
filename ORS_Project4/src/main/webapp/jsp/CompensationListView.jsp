@@ -1,3 +1,4 @@
+<%@page import="com.rays.pro4.Util.DataUtility"%>
 <%@page import="com.rays.pro4.Bean.FacultyBean"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="com.rays.pro4.Bean.CompensationBean"%>
@@ -49,6 +50,8 @@
 		
 		<%
 		List<FacultyBean> cl = (List<FacultyBean>) request.getAttribute("fList");
+		int next = DataUtility.getInt(request.getAttribute("nextlist").toString());
+		
 		%>
 
 		<center>
@@ -161,7 +164,7 @@
 					CompensationModel model = new CompensationModel();
 					%>
 					<%
-					if (list.size() < pageSize || model.nextPK() - 1 == bean.getId()) {
+					if (list.size() < pageSize || next == 0) {
 					%>
 					<td align="right"><input type="submit" name="operation"
 						disabled="disabled" value="<%=CompensationListCtl.OP_NEXT%>"></td>
