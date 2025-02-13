@@ -23,6 +23,7 @@ C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\controller\G
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\controller\MarksheetMeritListCtl.java
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\proj4\Test\CollegeModelTest.java
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\controller\MarksheetListCtl.java
+C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\Bean\CompensationBean.java
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\Model\StudentModel.java
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\Model\DoctorModel.java
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\Bean\DoctorBean.java
@@ -48,6 +49,7 @@ C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\proj4\Test\Facult
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\proj4\Test\MarksheetTest.java
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\controller\CourseListCtl.java
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\Util\HTMLUtility.java
+C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\Model\CompensationModel.java
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\Bean\StudentBean.java
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\controller\SubjectCtl.java
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\proj4\Test\TimeTableTest.java
@@ -61,12 +63,14 @@ C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\controller\P
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\Util\EmailMessage.java
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\controller\RoleCtl.java
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\Util\DataUtility.java
+C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\controller\CompensationListCtl.java
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\Bean\MarksheetBean.java
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\controller\BaseCtl.java
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\controller\CustomerCtl.java
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\controller\WelcomeCtl.java
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\proj4\Test\RoleTest.java
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\Util\DataValidator.java
+C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\controller\CompensationCtl.java
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\Bean\RoleBean.java
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\controller\CollegeCtl.java
 C:\Users\ASUS\git\project4\ORS_Project4\src\main\java\com\rays\pro4\controller\DoctorListCtl.java

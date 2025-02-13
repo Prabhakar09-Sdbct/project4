@@ -21,14 +21,17 @@ com\rays\pro4\controller\ErrorCtl.class
 com\rays\pro4\controller\TimeTableCtl.class
 com\rays\pro4\controller\LoginCtl.class
 com\rays\pro4\Util\DataUtility.class
+com\rays\pro4\Bean\CompensationBean.class
 com\rays\pro4\Model\CollegeModel.class
 com\rays\pro4\Model\PositionModel.class
 com\rays\pro4\Util\ServletUtility.class
+com\rays\pro4\controller\CompensationCtl.class
 com\rays\pro4\Model\StudentModel.class
 com\rays\pro4\controller\PositionListCtl.class
 com\rays\pro4\Bean\RoleBean.class
 com\rays\proj4\Test\StudentTest.class
 com\rays\pro4\controller\PaymentRecordCtl.class
+com\rays\pro4\controller\CompensationListCtl.class
 com\rays\pro4\controller\PrescriptionListCtl.class
 com\rays\proj4\Test\MarksheetTest.class
 com\rays\proj4\Test\UserTest.class
@@ -71,6 +74,7 @@ com\rays\pro4\controller\CollegeListCtl.class
 com\rays\pro4\Model\UserModel.class
 com\rays\pro4\controller\FrontControler.class
 com\rays\pro4\Model\CustomerModel.class
+com\rays\pro4\Model\CompensationModel.class
 com\rays\pro4\Model\RoleModel.class
 com\rays\pro4\controller\CourseListCtl.class
 com\rays\pro4\controller\SubjectListCtl.class
