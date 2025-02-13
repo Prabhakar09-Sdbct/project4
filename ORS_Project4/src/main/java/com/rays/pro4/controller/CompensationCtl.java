@@ -16,6 +16,8 @@ import com.rays.pro4.Bean.CompensationBean;
 import com.rays.pro4.Exception.ApplicationException;
 import com.rays.pro4.Exception.DuplicateRecordException;
 import com.rays.pro4.Model.CompensationModel;
+import com.rays.pro4.Model.CourseModel;
+import com.rays.pro4.Model.FacultyModel;
 import com.rays.pro4.Util.DataUtility;
 import com.rays.pro4.Util.DataValidator;
 import com.rays.pro4.Util.PropertyReader;
@@ -23,8 +25,8 @@ import com.rays.pro4.Util.ServletUtility;
 
 //TODO: Auto-generated Javadoc
 /**
- * Compensation functionality Controller. Performs operation for add, update, delete
- * and get Compensation
+ * Compensation functionality Controller. Performs operation for add, update,
+ * delete and get Compensation
  * 
  * @author Prabhakar Mandloi
  */
@@ -33,7 +35,30 @@ public class CompensationCtl extends BaseCtl {
 
 	/** The log. */
 	private static Logger log = Logger.getLogger(CompensationCtl.class);
-    
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see in.co.rays.ors.controller.BaseCtl#preload(javax.servlet.http.
+	 * HttpServletRequest)
+	 */
+	protected void preload(HttpServletRequest request) {
+
+		System.out.println("preload enter");
+
+		FacultyModel cmodel = new FacultyModel();
+		try {
+			List cList = cmodel.list();
+			request.setAttribute("fList", cList);
+		} catch (ApplicationException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("preload out");
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -50,7 +75,7 @@ public class CompensationCtl extends BaseCtl {
 			request.setAttribute("staffMember", PropertyReader.getValue("error.require", "staffMember"));
 			pass = false;
 		}
-		
+
 		if (DataValidator.isNull(request.getParameter("dateApplied"))) {
 			request.setAttribute("dateApplied", PropertyReader.getValue("error.require", "Date Applied"));
 			pass = false;
@@ -58,12 +83,12 @@ public class CompensationCtl extends BaseCtl {
 			request.setAttribute("dateApplied", "Invalid Date formate");
 			pass = false;
 		}
-		
+
 		if (DataValidator.isNull(request.getParameter("paymentAmount"))) {
 			request.setAttribute("paymentAmount", PropertyReader.getValue("error.require", "Payment Amount"));
 			pass = false;
 		}
-		
+
 		if (DataValidator.isNull(request.getParameter("state"))) {
 			request.setAttribute("state", PropertyReader.getValue("error.require", "State"));
 			pass = false;
@@ -167,7 +192,7 @@ public class CompensationCtl extends BaseCtl {
 				ServletUtility.handleException(e, request, response);
 				return;
 
-			} 
+			}
 		} else if (OP_RESET.equalsIgnoreCase(op)) {
 
 			ServletUtility.redirect(ORSView.COMPENSATION_CTL, request, response);

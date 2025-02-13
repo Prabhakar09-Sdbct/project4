@@ -100,7 +100,7 @@ public class FacultyBean extends BaseBean{
 	@Override
 	public String getkey() {
 		// TODO Auto-generated method stub
-		return id+"";
+		return firstName + " " + lastName;
 	}
 	public String getValue() {
 		// TODO Auto-generated method stub

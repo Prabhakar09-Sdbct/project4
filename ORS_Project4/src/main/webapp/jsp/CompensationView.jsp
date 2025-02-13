@@ -1,4 +1,5 @@
 
+<%@page import="com.rays.pro4.Bean.FacultyBean"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="com.rays.pro4.Bean.CompensationBean"%>
 <%@page import="com.rays.pro4.Bean.StudentBean"%>
@@ -44,6 +45,10 @@
 	<form action="<%=ORSView.COMPENSATION_CTL%>" method="post">
 		<%@include file="Header.jsp"%>
 
+		<%
+		List<FacultyBean> cl = (List<FacultyBean>) request.getAttribute("fList");
+		%>
+
 		<center>
 			<h1>
 				<%
@@ -86,9 +91,7 @@
 					<th align="left">Staff Member <span style="color: red">*</span>
 						:
 					</th>
-					<td><input type="text" name="staffMember"
-						placeholder="Enter Staff Member" size="26"
-						value="<%=DataUtility.getStringData(bean.getStaffMember())%>"></td>
+					<td><%=HTMLUtility.getList("staffMember", String.valueOf(bean.getStaffMember()), cl)%>&emsp;
 					<td style="position: fixed"><font color="red"><%=ServletUtility.getErrorMessage("staffMember", request)%></font>
 					</td>
 				</tr>
@@ -102,7 +105,7 @@
 						:
 					</th>
 					<td><input type="text" name="paymentAmount"
-						placeholder="Enter Payment Amount" size="26"
+						placeholder="Enter Payment Amount" size="25"
 						value="<%=DataUtility.getStringData(bean.getPaymentAmount())%>"></td>
 					<td style="position: fixed"><font color="red"><%=ServletUtility.getErrorMessage("paymentAmount", request)%></font>
 					</td>
@@ -111,17 +114,17 @@
 				<tr>
 					<th style="padding: 3px"></th>
 				</tr>
-				
+
 				<tr>
 					<th align="left">Date Applied<span style="color: red">*</span>
 						:
 					</th>
 					<td><input type="text" name="dateApplied" id="udate"
-						readonly="readonly" placeholder="Date Applied" size="26"
+						readonly="readonly" placeholder="Date Applied" size="25"
 						value="<%=DataUtility.getDateString(bean.getDateApplied())%>"></td>
 					<td style="position: fixed"><font color="red"> <%=ServletUtility.getErrorMessage("dateApplied", request)%></font></td>
 				</tr>
-				
+
 				<tr>
 					<th style="padding: 3px"></th>
 				</tr>
@@ -130,14 +133,13 @@
 					<th align="left">State <span style="color: red">*</span> :
 					</th>
 					<td>
-					<%
-					HashMap map = new HashMap();
-					map.put("Active", "Active");
-					map.put("Inactive", "Inactive");
+						<%
+						HashMap map = new HashMap();
+						map.put("Active", "Active");
+						map.put("Inactive", "Inactive");
 
-					String hlist = HTMLUtility.getList("state", String.valueOf(bean.getState()), map);
-					%>
-					<%=hlist%>
+						String hlist = HTMLUtility.getList("state", String.valueOf(bean.getState()), map);
+						%> <%=hlist%>
 					</td>
 					<td style="position: fixed"><font color="red"><%=ServletUtility.getErrorMessage("state", request)%></font>
 					</td>
@@ -155,13 +157,15 @@
 					%>
 					<td>&nbsp; &emsp; <input type="submit" name="operation"
 						value="<%=CompensationCtl.OP_UPDATE%>"> &nbsp; &nbsp; <input
-						type="submit" name="operation" value="<%=CompensationCtl.OP_CANCEL%>"></td>
+						type="submit" name="operation"
+						value="<%=CompensationCtl.OP_CANCEL%>"></td>
 					<%
 					} else {
 					%>
 					<td>&nbsp; &emsp; <input type="submit" name="operation"
 						value="<%=CompensationCtl.OP_SAVE%>"> &nbsp; &nbsp; <input
-						type="submit" name="operation" value="<%=CompensationCtl.OP_RESET%>"></td>
+						type="submit" name="operation"
+						value="<%=CompensationCtl.OP_RESET%>"></td>
 
 					<%
 					}

@@ -18,6 +18,7 @@ import com.rays.pro4.Bean.CompensationBean;
 import com.rays.pro4.Bean.CompensationBean;
 import com.rays.pro4.Exception.ApplicationException;
 import com.rays.pro4.Model.CompensationModel;
+import com.rays.pro4.Model.FacultyModel;
 import com.rays.pro4.Model.CompensationModel;
 import com.rays.pro4.Model.CompensationModel;
 import com.rays.pro4.Model.CompensationModel;
@@ -38,22 +39,28 @@ public class CompensationListCtl extends BaseCtl {
 	/** The log. */
 	private static Logger log = Logger.getLogger(CompensationListCtl.class);
 	
-	 /* (non-Javadoc)
-     * @see in.co.rays.ors.controller.BaseCtl#preload(javax.servlet.http.HttpServletRequest)
-     */
-    @Override
-    protected void preload(HttpServletRequest request){
-    	CompensationModel cmodel=new CompensationModel();
-    	try{
-    		List clist=cmodel.list();
-    		
-    		request.setAttribute("CompensationList", clist);
-    	}
-    	catch(ApplicationException e){
-    		e.printStackTrace();
-    	}
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see in.co.rays.ors.controller.BaseCtl#preload(javax.servlet.http.
+	 * HttpServletRequest)
+	 */
+	protected void preload(HttpServletRequest request) {
 
+		System.out.println("preload enter");
+
+		FacultyModel cmodel = new FacultyModel();
+		try {
+			List cList = cmodel.list();
+			request.setAttribute("fList", cList);
+		} catch (ApplicationException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("preload out");
+	}
 	/*
 	 * (non-Javadoc)
 	 * 
