@@ -124,7 +124,7 @@
 						:
 					</th>
 					<td><input type="text" name="dateApplied" id="udate"
-						readonly="readonly" placeholder="Date Applied" size="25"
+						readonly="readonly" placeholder="Enter Date Applied" size="25"
 						value="<%=DataUtility.getDateString(bean.getDateApplied())%>"></td>
 					<td style="position: fixed"><font color="red"> <%=ServletUtility.getErrorMessage("dateApplied", request)%></font></td>
 				</tr>

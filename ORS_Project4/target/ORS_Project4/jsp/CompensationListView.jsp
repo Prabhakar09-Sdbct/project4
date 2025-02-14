@@ -112,9 +112,9 @@
 						All.</th>
 
 					<th>S No.</th>
-					<th>Staff Member.</th>
-					<th>Payment Amount.</th>
-					<th>Date Applied.</th>
+					<th>Staff Member</th>
+					<th>Payment Amount</th>
+					<th>Date Applied</th>
 					<th>State</th>
 					<th>Edit</th>
 				</tr>
