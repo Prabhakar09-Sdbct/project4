@@ -24,6 +24,7 @@
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="<%=ORSView.APP_CONTEXT%>/js/Utilities.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 	$(function() {
@@ -92,6 +93,7 @@
 						:
 					</th>
 					<td><%=HTMLUtility.getList("staffMember", String.valueOf(bean.getStaffMember()), cl)%>&emsp;
+					
 					<td style="position: fixed"><font color="red"><%=ServletUtility.getErrorMessage("staffMember", request)%></font>
 					</td>
 				</tr>
@@ -106,8 +108,10 @@
 					</th>
 					<td><input type="text" name="paymentAmount"
 						placeholder="Enter Payment Amount" size="25"
+						oninput=" handleIntegerInput(this, 'paymentAmountError', 10)"
+						onblur=" validateIntegerInput(this, 'paymentAmountError', 10)"
 						value="<%=DataUtility.getStringData(bean.getPaymentAmount())%>"></td>
-					<td style="position: fixed"><font color="red"><%=ServletUtility.getErrorMessage("paymentAmount", request)%></font>
+					<td style="position: fixed"><font color="red" id="paymentAmountError"><%=ServletUtility.getErrorMessage("paymentAmount", request)%></font>
 					</td>
 				</tr>
 
