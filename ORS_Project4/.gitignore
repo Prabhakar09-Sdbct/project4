@@ -5,3 +5,4 @@ mysql-data/*.err
 mysql-data/*.cnf
 mysql-data/ib_*
 
+/target/
